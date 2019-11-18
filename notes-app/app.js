@@ -17,8 +17,62 @@
 // const validator = require('validator')
 // console.log(validator.isEmail('abc@gmail'))
 
-clk = require('chalk')
+// clk = require('chalk')
+// const greenMsg = clk.green.inverse.bold('Success')
+// //console.log(clk.green.inverse.bold('Success'))
+// console.log(greenMsg)
 
-console.log(clk.green.inverse.bold('Success'))
+const command = process.argv[2]
+
+// if(command === 'add') {
+//     console.log('adding notes')
+// } else if(command === 'remove'){
+//     console.log('Removing note')
+// }
+const yargs = require('yargs')
+yargs.command({
+    command:'add',
+    describe:'add a new note',
+    builder:{
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        }, 
+        body: {
+            describe: 'Note body',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function(){
+        console.log('adding a new note')
+    }
+})
+
+yargs.command({
+    command: 'remove', 
+    describe: 'remove a note',
+    handler: function(){
+        console.log('removing the note')
+    }
+})
+
+yargs.command({
+    command: 'list', 
+    describe: 'listing the database',
+    handler: function(){
+        console.log('listing the database')
+    }
+})
+
+yargs.command({
+    command: 'read', 
+    describe: 'reading the database',
+    handler: function(){
+        console.log('reading the database')
+    }
+})
 
 
+console.log(yargs.argv)
