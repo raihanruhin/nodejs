@@ -20,6 +20,5 @@
 clk = require('chalk')
 
 console.log(clk.green.inverse.bold('Success'))
-console.log('github up')
 
 
